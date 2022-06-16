@@ -30,10 +30,14 @@ bool manifestpatcher(char path[256], string manifestid)
 	}
 	tempfile<<"\t\"StateFlags\"\t\t\"4\""<<endl;
 	getline(mainfile, curline);
-	for(int i=8; i<=24; i++)
+	for(int i=8; i<=40; i++)
 	{
 		getline(mainfile, curline);
 		tempfile<<curline<<endl;
+		if(curline == "\t\"InstalledDepots\"")
+		{
+			i=37;
+		}
 	}
 	tempfile<<"\t\t\t\"manifest\"\t\t\""<<manifestid<<"\""<<endl;
 	getline(mainfile, curline);
